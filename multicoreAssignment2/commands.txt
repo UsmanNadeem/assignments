@@ -1,0 +1,25 @@
+
+
+
+valgrind --tool=callgrind --trace-children=yes ./a.out
+valgrind --tool=callgrind ./a.out
+
+./gprof2dot.py -f callgrind callgrind.out.11393 | dot -Tsvg -o output.svg
+
+gprof ./a.out | ./gprof2dot.py -n0 -e0 | dot -Tpng -o output.png
+gprof ./a.out | ./gprof2dot.py | dot -Tpng -o output.png
+gprof ./a.out gmon.out > analysis.txt
+
+
+g++ -g -pg -fopenmp -std=c++11 main.cpp
+g++ -fopenmp -std=c++11 main.cpp
+
+
+(time ./a.out) > /dev/null 2> out.txt
+
+
+g++ -fopenmp -std=c++11 main.cpp 
+
+
+(time ./a.out 1000 25 1) > /dev/null 2> 1000-25-1.txt && (time ./a.out 1000 25 2) > /dev/null 2> 1000-25-2.txt && (time ./a.out 1000 25 3) > /dev/null 2> 1000-25-3.txt && (time ./a.out 1000 25 4) > /dev/null 2> 1000-25-4.txt && (time ./a.out 5000 5 1) > /dev/null 2> 5000-5-1.txt && (time ./a.out 5000 5 2) > /dev/null 2> 5000-5-2.txt && (time ./a.out 5000 5 3) > /dev/null 2> 5000-5-3.txt && (time ./a.out 5000 5 4) > /dev/null 2> 5000-5-4.txt && (time ./a.out 10000 2 1) > /dev/null 2> 10000-2-1.txt && (time ./a.out 10000 2 2) > /dev/null 2> 10000-2-2.txt && (time ./a.out 10000 2 3) > /dev/null 2> 10000-2-3.txt && (time ./a.out 10000 2 4) > /dev/null 2> 10000-2-4.txt && (time ./a.out 15000 1 1) > /dev/null 2> 15000-1-1.txt && (time ./a.out 15000 1 2) > /dev/null 2> 15000-1-2.txt && (time ./a.out 15000 1 3) > /dev/null 2> 15000-1-3.txt && (time ./a.out 15000 1 4) > /dev/null 2> 15000-1-4.txt
+
